@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呼吸照護病患端 - 儀表板</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+    <header class="patient-header card">
+        <div class="patient-info">
+            <div><strong>姓名:</strong> 張阿姨</div>
+            <div><strong>年齡:</strong> 68 歲</div>
+        </div>
+        <div class="patient-details">
+            <div><strong>診斷:</strong> COPD (慢性阻塞性肺病)</div>
+            <div><strong>使用設備:</strong> 居家呼吸器 (BiPAP)</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="actions-bar">
+            <a href="upload.html" class="btn btn-primary icon-btn">
+                <span>📅</span> 去輸入數據與上傳照片
+            </a>
+        </div>
+
+        <section class="vitals-grid">
+            <div class="vital-card card" id="card-SpO2">
+                <div class="vital-title">SpO2 血氧</div>
+                <div class="vital-value">--</div>
+                <div class="vital-unit">%</div>
+                <div class="vital-time">更新於: --</div>
+            </div>
+            <div class="vital-card card" id="card-HR">
+                <div class="vital-title">HR 心率</div>
+                <div class="vital-value">--</div>
+                <div class="vital-unit">bpm</div>
+                <div class="vital-time">更新於: --</div>
+            </div>
+            <div class="vital-card card" id="card-RR">
+                <div class="vital-title">RR 呼吸率</div>
+                <div class="vital-value">--</div>
+                <div class="vital-unit">次/分</div>
+                <div class="vital-time">更新於: --</div>
+            </div>
+            <div class="vital-card card" id="card-BP">
+                <div class="vital-title">血壓 BP</div>
+                <div class="vital-value">--/--</div>
+                <div class="vital-unit">mmHg</div>
+                <div class="vital-time">更新於: --</div>
+            </div>
+             <div class="vital-card card" id="card-Pulse">
+                <div class="vital-title">脈搏 Pulse</div>
+                <div class="vital-value">--</div>
+                <div class="vital-unit">bpm</div>
+                <div class="vital-time">更新於: --</div>
+            </div>
+            <div class="vital-card card" id="card-EtCO2">
+                <div class="vital-title">EtCO2 二氧化碳</div>
+                <div class="vital-value">--</div>
+                <div class="vital-unit">mmHg</div>
+                <div class="vital-time">更新於: --</div>
+            </div>
+        </section>
+
+        <section id="alerts-section" class="alerts-container">
+            </section>
+
+        <section class="emergency-section">
+            <button id="emergencyBtn" class="btn btn-danger btn-large">
+                🚨 緊急一鍵通報醫院
+            </button>
+        </section>
+
+        <section class="charts-container">
+            <div class="chart-card card">
+                <h3>SpO2 血氧趨勢</h3>
+                <canvas id="chart-SpO2"></canvas>
+            </div>
+            <div class="chart-card card">
+                <h3>HR 心率趨勢</h3>
+                <canvas id="chart-HR"></canvas>
+            </div>
+             <div class="chart-card card">
+                <h3>RR 呼吸率趨勢</h3>
+                <canvas id="chart-RR"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="emergencyModal" class="modal">
+        <div class="modal-content card">
+            <h2 class="text-danger">⚠️ 緊急確認</h2>
+            <p>您確定要向醫院發送緊急通報嗎？</p>
+            <div class="modal-actions">
+                <button id="cancelEmergencyBtn" class="btn btn-secondary">取消</button>
+                <button id="confirmEmergencyBtn" class="btn btn-danger">確認通報</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // 頁面載入時執行 Dashboard 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            DashboardApp.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+/* === 變數設定 (醫療藍白風格) === */
+:root {
+    --primary-color: #0066cc; /* 主要藍色 */
+    --primary-light: #e6f2ff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745; /* 正常 (綠) */
+    --warning-color: #ffc107; /* 注意 (黃) */
+    --danger-color: #dc3545;  /* 危險 (紅) */
+    --bg-light: #f4f7f9;      /* 背景灰 */
+    --text-dark: #333333;
+    --text-muted: #666666;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 12px;
+}
+
+/* === 全域設定 === */
+body {
+    font-family: 'Roboto', 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+/* 手機優先容器設定 */
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 桌面版寬度限制 */
+@media (min-width: 768px) {
+    .container {
+        max-width: 900px;
+        padding: 24px;
+    }
+    body {
+        padding: 24px;
+    }
+}
+
+/* 卡片通用樣式 */
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* 按鈕通用樣式 */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.btn-large {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+}
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: #0052a3; }
+.btn-secondary { background-color: var(--secondary-color); color: white; }
+.btn-success { background-color: var(--success-color); color: white; }
+.btn-danger { background-color: var(--danger-color); color: white; }
+.btn-danger:hover { background-color: #bd2130; }
+.icon-btn { display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+/* === Dashboard 頁面樣式 === */
+.patient-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: 5px solid var(--primary-color);
+}
+@media (min-width: 768px) {
+    .patient-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.actions-bar { margin-bottom: 20px; }
+
+/* 生理數據卡片網格 */
+.vitals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 手機兩欄 */
+    gap: 16px;
+    margin-bottom: 24px;
+}
+@media (min-width: 768px) {
+    .vitals-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 桌面多欄 */
+    }
+}
+
+.vital-card {
+    text-align: center;
+    padding: 16px;
+    border-top: 4px solid #ddd; /* 預設灰色 */
+}
+/* 狀態顏色樣式 (由 JS 添加 class) */
+.vital-card.status-normal { border-top-color: var(--success-color); background-color: #f8fff9; }
+.vital-card.status-warning { border-top-color: var(--warning-color); background-color: #fffdf5; }
+.vital-card.status-danger { border-top-color: var(--danger-color); background-color: #fff8f8; }
+.status-normal .vital-value { color: var(--success-color); }
+.status-warning .vital-value { color: var(--warning-color); }
+.status-danger .vital-value { color: var(--danger-color); }
+
+.vital-title { color: var(--text-muted); font-size: 14px; margin-bottom: 8px; font-weight: 500;}
+.vital-value { font-size: 32px; font-weight: 700; line-height: 1.2; }
+.vital-unit { color: var(--text-muted); font-size: 14px; }
+.vital-time { font-size: 12px; color: #999; margin-top: 12px; }
+
+/* 異常警示區 */
+.alerts-container { margin-bottom: 24px; }
+.alert-card {
+    background-color: #fff8f8;
+    border-left: 6px solid var(--danger-color);
+    padding: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+.alert-icon { font-size: 24px; }
+.alert-text { font-weight: 700; color: var(--danger-color); }
+
+/* 緊急按鈕區 */
+.emergency-section { margin-bottom: 32px; }
+
+/* 圖表區 */
+.chart-card h3 { margin-top: 0; color: var(--primary-color); font-size: 18px; }
+.chart-card canvas { max-height: 300px; }
+
+
+/* === Upload 頁面樣式 === */
+.page-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.page-header h1 { margin: 0; font-size: 24px; color: var(--primary-color); }
+.form-card h2 { margin-top: 0; color: var(--primary-color); border-bottom: 2px solid var(--primary-light); padding-bottom: 10px; margin-bottom: 20px; }
+.hint-text { color: var(--text-muted); font-size: 14px; margin-top: -10px; margin-bottom: 20px; }
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-dark); }
+.form-group label small { color: var(--text-muted); font-weight: normal; }
+.form-group input[type="number"],
+.form-group input[type="datetime-local"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box; /* 確保 padding 不會撐開寬度 */
+}
+.form-group input:focus, .form-group textarea:focus { border-color: var(--primary-color); outline: none; }
+
+/* 桌面版表單兩欄排版 */
+@media (min-width: 768px) {
+    .form-row { display: flex; gap: 20px; }
+    .form-row .col { flex: 1; }
+}
+
+/* 照片上傳預覽 */
+#photoPreview { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; border: 2px solid #eee; margin-bottom: 16px; }
+.upload-section input[type=file] { padding: 10px 0; }
+
+/* 照片牆 */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+}
+.gallery-item { position: relative; cursor: pointer; }
+.gallery-thumb { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid transparent; transition: border-color 0.2s; }
+.gallery-thumb:hover { border-color: var(--primary-color); }
+
+
+/* === Modal (彈出視窗) 通用樣式 === */
+.modal {
+    display: none; /* 預設隱藏 */
+    position: fixed; z-index: 999; left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6); /* 半透明黑色背景 */
+    justify-content: center; align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/* 顯示 Modal 時的 class */
+.modal.show { display: flex; }
+
+.modal-content {
+    max-width: 400px; width: 100%;
+    text-align: center;
+}
+.modal-actions { display: flex; gap: 16px; margin-top: 24px; }
+.modal-actions .btn { flex: 1; }
+.text-danger { color: var(--danger-color); }
+
+/* 照片放大 Modal 特殊樣式 */
+#imageModal { padding: 0; background-color: rgba(0,0,0,0.9); }
+.modal-image-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 8px; }
+#imageCaption { margin-top: 15px; color: white; text-align: center; font-size: 18px; max-width: 90%; }
+.close-modal {
+    position: absolute; top: 20px; right: 35px; color: #f1f1f1;
+    font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+}
+.close-modal:hover { color: #bbb; }

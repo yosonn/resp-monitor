@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呼吸照護 - 數據與照片上傳</title>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-page">
+
+    <header class="page-header">
+        <a href="index.html" class="btn btn-secondary">← 回首頁</a>
+        <h1>數據輸入與照片上傳</h1>
+    </header>
+
+    <main class="container">
+
+        <section class="card form-card">
+            <h2>✏️ 手動輸入生理數據</h2>
+            <form id="vitalsForm">
+                <div class="form-group">
+                     <label for="measurementTime">測量時間</label>
+                     <input type="datetime-local" id="measurementTime" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="input-BP_sys">收縮壓 (SYS) <small>mmHg</small></label>
+                        <input type="number" id="input-BP_sys" placeholder="例如: 120">
+                    </div>
+                    <div class="form-group col">
+                        <label for="input-BP_dia">舒張壓 (DIA) <small>mmHg</small></label>
+                        <input type="number" id="input-BP_dia" placeholder="例如: 80">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="input-SpO2">血氧 (SpO2) <small>%</small></label>
+                        <input type="number" id="input-SpO2" placeholder="例如: 98">
+                    </div>
+                    <div class="form-group col">
+                        <label for="input-HR">心率 (HR) <small>bpm</small></label>
+                        <input type="number" id="input-HR" placeholder="例如: 75">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                     <div class="form-group col">
+                        <label for="input-Pulse">脈搏 (Pulse) <small>bpm</small></label>
+                        <input type="number" id="input-Pulse" placeholder="例如: 75">
+                    </div>
+                    <div class="form-group col">
+                        <label for="input-RR">呼吸率 (RR) <small>次/分</small></label>
+                        <input type="number" id="input-RR" placeholder="例如: 16">
+                    </div>
+                </div>
+
+                 <div class="form-group">
+                    <label for="input-EtCO2">二氧化碳 (EtCO2) <small>mmHg</small></label>
+                    <input type="number" id="input-EtCO2" placeholder="例如: 35">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">提交數據</button>
+            </form>
+        </section>
+
+        <section class="card form-card upload-section">
+            <h2>📷 上傳健康照片</h2>
+            <p class="hint-text">例如: 傷口、痰液顏色、呼吸器佩戴狀況</p>
+            
+            <div class="form-group">
+                <input type="file" id="photoInput" accept="image/*">
+            </div>
+
+            <div id="photoPreviewContainer" style="display: none;">
+                <img id="photoPreview" src="" alt="預覽照片">
+                <div class="form-group">
+                    <label for="photoNote">照片備註</label>
+                    <textarea id="photoNote" rows="3" placeholder="請描述照片內容..."></textarea>
+                </div>
+                <button id="confirmUploadBtn" class="btn btn-success">確認上傳照片</button>
+            </div>
+        </section>
+
+        <section class="card form-card">
+            <h2>🖼️ 歷史照片紀錄</h2>
+            <div id="galleryGrid" class="gallery-grid">
+                <p>暫無照片紀錄</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-image-content" id="expandedImage">
+        <div id="imageCaption"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // 頁面載入時執行 Upload Page 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            UploadApp.init();
+        });
+    </script>
+</body>
+</html>

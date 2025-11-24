@@ -96,20 +96,19 @@ function initializeFakeData() {
    4. ⭐ 儀器資料功能
 ------------------------- */
 
-// 初始化假儀器資料
+// 初始化假儀器資料（強制覆蓋）
 function initializeDeviceData() {
-    const existing = localStorage.getItem(STORAGE_KEY_DEVICE);
-    if (existing) return;
 
     const fakeDevice = {
-        name: "便攜式吸入器",
-        id: "DEV-00231",
-        borrowTime: "2025/01/28 10:00",
-        usagePeriod: "2025/01/28 ～ 2025/02/15",
-        notes: "每天早晚各使用 2 下，使用後請清潔面罩。",
+        name: "氧氣濃縮機（家用型）",
+        id: "OX-8821-TW",
+        borrowTime: "2025/01/10 14:20",
+        usagePeriod: "2025/01/10 ～ 2025/03/10",
+        notes: "每天至少使用 8 小時，睡覺時需全程佩戴。請保持管線乾淨，避免彎折。",
         status: "正常"
     };
 
+    // ⭐ 強制覆蓋 localStorage（最重要）
     localStorage.setItem(STORAGE_KEY_DEVICE, JSON.stringify(fakeDevice));
 }
 
@@ -431,3 +430,4 @@ const UploadApp = {
         modal.onclick = (e) => { if (e.target === modal) modal.classList.remove("show"); };
     }
 };
+

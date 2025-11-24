@@ -218,4 +218,30 @@ body {
     position: absolute; top: 20px; right: 35px; color: #f1f1f1;
     font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
 }
+
 .close-modal:hover { color: #bbb; }
+
+/* === 儀器資訊卡片 === */
+.device-card {
+    border-left: 5px solid var(--primary-color);
+    padding: 20px;
+}
+
+.device-title {
+    margin-top: 0;
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.device-row {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.device-row span {
+    color: var(--text-dark);
+}
+
+#deviceStatus.status-normal { color: var(--success-color); font-weight: 700; }
+#deviceStatus.status-danger { color: var(--danger-color); font-weight: 700; }

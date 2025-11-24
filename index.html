@@ -22,6 +22,19 @@
     </header>
 
     <main class="container">
+
+        <!-- ⭐ 新增 儀器使用資訊區塊（放在按鈕上方） -->
+        <section class="card device-card" id="deviceInfoSection">
+            <h2 class="device-title">🔧 儀器使用資訊</h2>
+            
+            <div class="device-row"><strong>儀器名稱：</strong><span id="deviceName">--</span></div>
+            <div class="device-row"><strong>設備編號：</strong><span id="deviceId">--</span></div>
+            <div class="device-row"><strong>借出時間：</strong><span id="borrowTime">--</span></div>
+            <div class="device-row"><strong>使用期限：</strong><span id="usagePeriod">--</span></div>
+            <div class="device-row"><strong>使用注意事項：</strong><span id="deviceNotes">--</span></div>
+            <div class="device-row"><strong>儀器狀態：</strong><span id="deviceStatus" class="status-normal">--</span></div>
+        </section>
+
         <div class="actions-bar">
             <a href="upload.html" class="btn btn-primary icon-btn">
                 <span>📅</span> 去輸入數據與上傳照片
@@ -68,7 +81,7 @@
         </section>
 
         <section id="alerts-section" class="alerts-container">
-            </section>
+        </section>
 
         <section class="emergency-section">
             <button id="emergencyBtn" class="btn btn-danger btn-large">
@@ -106,7 +119,6 @@
 
     <script src="script.js"></script>
     <script>
-        // 頁面載入時執行 Dashboard 初始化
         document.addEventListener('DOMContentLoaded', () => {
             DashboardApp.init();
         });
